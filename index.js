@@ -175,6 +175,8 @@ function getOceaniaApi() {
             </span>`;
             index++;
         })
+        document.getElementById('flag').src = `https://flagcdn.com/w320/de.png`;
+        document.getElementById('coatArms').src = `https://mainfacts.com/media/images/coats_of_arms/de.png`
 
     })
 }
@@ -200,4 +202,5 @@ let buttons = document.querySelectorAll('.continentHead');
       });
     });
   });
+ 
  
