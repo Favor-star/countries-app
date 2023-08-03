@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countries App</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="shortcut icon" href="image/globe-svgrepo-com.svg";
+    
+</head>
+<body >
+    <section id="mainHead">
+        <header>
+            <h1>List of Countries</h1>
+            <p>The full list of countries in the whole world</p>
+        
+        </header>
+        <section id="searchSection">
+            <div class="links">
+                <a class="navLinks" href="#africa">AFRICA</a>
+                <a class="navLinks" href="#america">AMERICA</a>
+                <a class="navLinks" href="#america">ASIA</a>
+                <a class="navLinks" href="#america">EUROPE</a>
+                <a class="navLinks" href="#oceania">OCEANIA</a>
+                
+            </div>
+            <div id="search">
+                <input type="text" id="searchBar" title="search Bar" placeholder="Country's name">
+                <img id="searchIcon" width="30" height="30" src="https://img.icons8.com/ios-filled/50/google-web-search.png" alt="google-web-search"/>
+            </div>
+            <div class="navLinks"> WHITE MODE</div>
+        
+        </section>
+    </section>
+    
+    <section class="mainContent">
+        <div id="continent-africa">
+            <header  class="continentHead" id="title-africa">
+                <h2  >Africa</h2>
+                <img width="25" height="25" src="https://img.icons8.com/ios-filled/50/down-squared--v1.png" alt="down-squared--v1"/>
+            </header>
+        <div class="countries" id="africa"></div>
+        </div>
+        <div id="continent-america">
+            <header class="continentHead">
+                <h2 >America</h2>
+                <img width="25" height="25" src="https://img.icons8.com/ios-filled/50/down-squared--v1.png" alt="down-squared--v1"/>
+            </header>
+            
+            <div class="countries" id="america"></div>
+        </div>
+        <div id="continent-asia">
+            <header class="continentHead">
+                <h2>Asia</h2>
+                <img width="25" height="25" src="https://img.icons8.com/ios-filled/50/down-squared--v1.png" alt="down-squared--v1"/>
+            </header>
+            
+            <div class="countries" id="asia"></div>
+        </div>
+        <div id="continent-europe">
+            <header class="continentHead">
+                <h2 >Europe</h2>
+                <img width="25" height="25" src="https://img.icons8.com/ios-filled/50/down-squared--v1.png" alt="down-squared--v1"/>
+            </header>
+            
+            <div class="countries" id="europe"></div>
+        </div>
+        <div id="continent-oceania">
+            <header class="continentHead">
+                <h2>Oceania</h2>
+                <img width="25" height="25" src="https://img.icons8.com/ios-filled/50/down-squared--v1.png" alt="down-squared--v1"/>
+            </header>
+            <div class="countries" id="oceania"></div>
+        </div>
+
+    </section>
+</body>
+<script src="index.js"></script>
+</html>
