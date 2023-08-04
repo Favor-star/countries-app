@@ -5,6 +5,8 @@
  let asia = document.getElementById('asia');
  let europe = document.getElementById('europe');
  let oceania = document.getElementById('oceania');
+ let popUp = document.getElementById('pop-up');
+ let divValue;
 
 //CREATING DIVS FOR AFRICA SECTION
 for(let i = 1; i <= 59; i ++){
@@ -56,6 +58,7 @@ function getAfricaApi(){
         let afrCountries = document.querySelectorAll('.africaCountries');
         let index = 0;
         afrCountries.forEach((elem)=>{
+            elem.value = result[index].name.common;
             elem.innerHTML = `
             <span class="flag-container">
             <img class="flags" src=${result[index].flags.svg} alt= "${result[index].flags.alt}">
@@ -163,6 +166,7 @@ function getOceaniaApi() {
         let oceaniaCountries = document.querySelectorAll('.oceaniaCountries');
         let index = 0;
         oceaniaCountries.forEach(elem => {
+            
             elem.innerHTML = `
             <span class="flag-container">
             <img class="flags" src=${result5[index].flags.png} alt= "${result5[index].flags.alt}">
@@ -175,8 +179,8 @@ function getOceaniaApi() {
             </span>`;
             index++;
         })
-        document.getElementById('flag').src = `https://flagcdn.com/w320/de.png`;
-        document.getElementById('coatArms').src = `https://mainfacts.com/media/images/coats_of_arms/de.png`
+        // document.getElementById('flag').src = `https://flagcdn.com/w320/de.png`;
+        // document.getElementById('coatArms').src = `https://mainfacts.com/media/images/coats_of_arms/de.png`
 
     })
 }
@@ -187,20 +191,96 @@ getOceaniaApi();
 let buttons = document.querySelectorAll('.continentHead');
   let contents = document.querySelectorAll('.countries');
 
-  buttons.forEach((button, index) => {
-    button.addEventListener('click', () => {
-      contents.forEach((content, contentIndex) => {
-        if (contentIndex === index) {
-          if (content.style.display === 'none') {
-            content.style.display = 'flex';
-          } else {
+    buttons.forEach((button, index) => {
+        button.addEventListener('click', () => {
+        contents.forEach((content, contentIndex) => {
+            if (contentIndex === index) {
+            if (content.style.display === 'none') {
+                content.style.display = 'flex';
+            } else {
+                content.style.display = 'none';
+            }
+            } else {
             content.style.display = 'none';
-          }
-        } else {
-          content.style.display = 'none';
-        }
-      });
+            }
+        });
+        });
     });
-  });
- 
- 
+    
+
+    //FUNCTION TO SHW AND HIDE THE POP - UP DIV
+    function hidePopUp() {
+        
+        let closeBtn = document.getElementById('closeBtn');
+    popUp.style.display = "none"
+    }
+
+    function showPopUp() {
+        popUp.style.display = 'block';
+    }
+    //adding Event listener to the divs (".continental")
+    let continental = document.querySelectorAll(".continental");
+    continental.forEach((elem)=>{
+        elem.addEventListener("click",showPopUp);
+    })
+
+    //search function 
+    let searchResult;
+
+    function searchApi(){
+        
+        let searchBar = document.getElementById('searchBar');
+        if(searchBar.value == null || searchBar.value.trim() == "") {
+            alert("The search bar is empty")
+
+        }
+        else if (searchBar.value){
+            searchResult = searchBar.value.trim();
+            console.log(`Type:${typeof searchResult} and then Result ${searchResult}`)
+            showInfo()
+            
+        } 
+    }
+
+    // function to show info in poped div 
+    let errorMsg = true;
+    async function showInfo() {
+        let searchUrl = `https://restcountries.com/v3.1/name/${searchResult}`
+        console.log(searchUrl);
+        try {
+            const searches = await fetch(searchUrl, {mode: "cors"});
+            if (!searches.ok) {
+                throw new Error(alert('There was an error. Please try again'));
+            }
+            const datas = await searches.json();
+            console.log(datas)
+            document.getElementById('countryName').innerHTML = datas[0].name.common;
+            document.getElementById('flag').src = datas[0].flags.png;
+            document.getElementById('coatArms').src= datas[0].coatOfArms.svg;
+            document.getElementById('officialName').innerHTML = datas[0].name.official;
+            document.getElementById('capitalCity').innerHTML = datas[0].capital;
+            document.getElementById('commonName').innerHTML = datas[0].name.common;
+            document.getElementById('demonyms').innerHTML = datas[0].demonyms.eng.f;
+            document.getElementById('independency').innerHTML = `${datas[0].independent} and ${datas[0].status}` ;
+            document.getElementById('dialingCode').innerHTML = `${datas[0].idd.root}${datas[0].idd.suffixes[0]}`;
+            document.getElementById('drivingSide').innerHTML = `${datas[0].car.side}`;
+            document.getElementById('area').innerHTML = `${datas[0].area} Sq KM`;
+            document.getElementById('population').innerHTML = `${datas[0].population}`;
+            document.getElementById('continent').innerHTML = `${datas[0].continents}`;
+            document.getElementById('timeZone').innerHTML = `${datas[0].timezones}`;
+            document.getElementById('countryLat').innerHTML = `${datas[0].latlng[0]}`;
+            document.getElementById('countryLong').innerHTML = `${datas[0].latlng[1]}`;
+            document.getElementById('capitalLat').innerHTML = `${datas[0].capitalInfo.latlng[0]}`;
+            document.getElementById('capitalLong').innerHTML = `${datas[0].capitalInfo.latlng[1]}`;
+
+        }
+        catch (error) {
+            console.error("ther was an aerro", error);
+            alert(error);
+
+        }
+    
+    finally {
+    showPopUp();
+    }
+    }

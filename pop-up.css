@@ -14,8 +14,9 @@
     /* border: 2px solid black; */
     background-color: rgba(0, 0, 0, 0.493);
     padding-bottom: 60px;
-    
+    display: none;
 }
+
 #pop-up2 {
     width: 60%;
     height: 90%;   
@@ -59,7 +60,7 @@
     height: 150px;
     width: 250px;
     /* border: 1px solid brown; */
-    object-fit: contain;
+    object-fit: cover;
     box-shadow: 1px 1px 10px var(--shadows2);
 }
 #coatArms {
@@ -105,5 +106,9 @@ figcaption {
     padding-left: 10px;
     font-weight: normal;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+}
+#capitalLat , #capitalLong , #countryLat , #countryLong {
+    margin-left: 4px;
+    font-weight: 600px;
 }

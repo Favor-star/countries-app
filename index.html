@@ -12,7 +12,7 @@
 <body >
     <section id="mainHead">
         <header>
-            <h1>List of Countries</h1>
+            <h1 onclick="showPopUp()">List of Countries</h1>
             <p>The full list of countries in the whole world</p>
         
         </header>
@@ -20,14 +20,14 @@
             <div class="links">
                 <a class="navLinks" href="#africa">AFRICA</a>
                 <a class="navLinks" href="#america">AMERICA</a>
-                <a class="navLinks" href="#america">ASIA</a>
-                <a class="navLinks" href="#america">EUROPE</a>
+                <a class="navLinks" href="#asia">ASIA</a>
+                <a class="navLinks" href="#europe">EUROPE</a>
                 <a class="navLinks" href="#oceania">OCEANIA</a>
                 
             </div>
             <div id="search">
                 <input type="text" id="searchBar" title="search Bar" placeholder="Country's name">
-                <img id="searchIcon" width="30" height="30" src="https://img.icons8.com/ios-filled/50/google-web-search.png" alt="google-web-search"/>
+                <img onclick="searchApi()" id="searchIcon" width="30" height="30" src="https://img.icons8.com/ios-filled/50/google-web-search.png" alt="google-web-search"/>
             </div>
             <div class="navLinks"> WHITE MODE</div>
         
@@ -76,7 +76,7 @@
 
     </section>
 </body>
-<div id="pop-up">
+<div id="pop-up" class="popUP">
     <div id="pop-up2">
         <div id="mainPopUpInfo">
                 <div><h1 id="countryName">COUNTRY'S NAME</h1></div>
@@ -95,18 +95,35 @@
                     <div> Political Data
                         <p class="popUpInfo political">Common name: <span id="commonName"></span></p>
                         <p class="popUpInfo political">Official name: <span id="officialName"></span></p>
-                        <p class="popUpInfo political">Detonym: <span id="detonym"></span></p>
+                        <p class="popUpInfo political">Capital City: <span id="capitalCity"></span></p>
+                        <p class="popUpInfo political">Demonym: <span id="demonyms"></span></p>
                         <p class="popUpInfo political">Currency: <span id="currency"></span></p>
                         <p class="popUpInfo political">Independency: <span id="independency"></span></p>
                         <p class="popUpInfo political">Dialing code: <span id="dialingCode"></span></p>
                         <p class="popUpInfo political">Driving Side: <span id="drivingSide"></span></p>
                     </div>
                     <div >Geographical Data
+                        <p class="popUpInfo geo">Population: <span id="population"></span></p>
                         <p class="popUpInfo geo">Area: <span id="area"></span></p>
                         <p class="popUpInfo geo">Continent: <span id="continent"></span></p>
                         <p class="popUpInfo">Time Zone: <span id="timeZone"></span></p>
-                        <p class="popUpInfo geo latLong">Latitudes <span class="longs">Country: <span id="countryLat"></span> <span class="longs">Capital: <span id="capitalLat"></span></span></p>
-                        <p class="popUpInfo geo latLong">Longitudes <span class="longs">Country: <span id="countryLong"></span><span class="longs">Capital: <span id="capitalLong"></span></p>
+                        <p class="popUpInfo geo latLong">Latitudes:
+                            <span class="longs">Country:
+                                <span id="countryLat"></span>
+                            </span>
+                            <span class="longs">Capital: 
+                                <span id="capitalLat"></span>
+                            </span>
+                        </p>
+                        <p class="popUpInfo geo latLong">Longitudes
+                            <span class="longs">Country:  
+                                <span id="countryLong"></span>
+                            </span>
+                            <span class="longs">Capital:  
+                                <span id="capitalLong"></span>
+                            </span>
+                        </p>
+                        
                     </div>
                 </div>
             <div>
@@ -114,7 +131,7 @@
                 <a  id="maps" href="">Google Map</a>
                         
             </div>
-            <img id="closeBtn" width="67" height="67" src="https://img.icons8.com/external-flat-icons-inmotus-design/67/FFFFFF/external-close-text-editor-flat-icons-inmotus-design.png" alt="external-close-text-editor-flat-icons-inmotus-design"/>
+            <img id="closeBtn"onclick="hidePopUp()" width="67" height="67" src="https://img.icons8.com/external-flat-icons-inmotus-design/67/FFFFFF/external-close-text-editor-flat-icons-inmotus-design.png" alt="external-close-text-editor-flat-icons-inmotus-design"/>
         </div> 
         
     </div>
