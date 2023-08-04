@@ -1,3 +1,7 @@
+:root {
+    --darkColor1: #041C32;
+    --darkColor2: #EEEEEE;
+}
 * {
     box-sizing: border-box;
     font-size: 16px;
@@ -80,12 +84,13 @@ figcaption {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    border: 1px solid slateblue;
+    /* border: 1px solid slateblue; */
     margin-top: 30px;
 }
 .pop-up-info div {
     font-weight: 800;
-    box-shadow: 2px 2px 7px black;
+    box-shadow: 0px 2px 7px black;
+    border-radius: 10px;
     padding: 10px;
     font-family: cursive, 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     margin: 10px;
@@ -108,7 +113,64 @@ figcaption {
     display: flex;
     flex-direction: row;
 }
-#capitalLat , #capitalLong , #countryLat , #countryLong {
-    margin-left: 4px;
-    font-weight: 600px;
+#countryLong , #countryLat , #capitalLong , #capitalLat{
+    margin-left: 10px;
+    font-weight: 700;
+}
+#symbol {
+    font-weight: normal;
+    font-size: 1.5em;
+    padding: auto 10px;
+
+}
+.mapsDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+#maps {
+    font-weight: 700;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+#maps a {
+    text-decoration: none;
+    color: darkred;
+}
+/* Dark Mode*/
+
+
+.darkMode {
+    background-color: var(--darkColor1);
+    color: var(--darkColor2);
+}
+#darkModeImg {
+    margin-left: 27px;
+    margin-right: -2px;
+
+}
+.navLinks-black {
+    
+    color: var(--darkColor2);
+}
+.navLinks-black:hover {
+    background-color: var(--darkColor2);
+    color: var(--darkColor1);
+}
+/* .darkClick {
+
+} */
+#darkWhite:hover {
+    background-color: var(--darkColor2);
+    color: var(--darkColor1);
+
+
+}
+.continentHead-black {
+    box-shadow: 2px 2px 2px 3px rgba(255, 255, 255, 0.644);
+    background-color: var(--darkColor2);
+    color: var(--darkColor1);
+
 }

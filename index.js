@@ -185,7 +185,6 @@ function getOceaniaApi() {
     })
 }
 getOceaniaApi();
-
 //FOLD / UNFOLD BUTTONs FOR EACH DIVISION
 
 let buttons = document.querySelectorAll('.continentHead');
@@ -211,8 +210,8 @@ let buttons = document.querySelectorAll('.continentHead');
     //FUNCTION TO SHW AND HIDE THE POP - UP DIV
     function hidePopUp() {
         
-        let closeBtn = document.getElementById('closeBtn');
-    popUp.style.display = "none"
+        
+        popUp.style.display = "none";
     }
 
     function showPopUp() {
@@ -221,42 +220,64 @@ let buttons = document.querySelectorAll('.continentHead');
     //adding Event listener to the divs (".continental")
     let continental = document.querySelectorAll(".continental");
     continental.forEach((elem)=>{
-        elem.addEventListener("click",showPopUp);
+        elem.addEventListener("click", ()=>{
+            let innerTitle = elem.querySelector(".info-container .title");
+                if (innerTitle) {
+                   divValue = innerTitle.textContent;
+                   searchResult =divValue;
+                   showInfo();
+                //    console.log(divValue);
+                }
+        });
     })
-
+    
     //search function 
     let searchResult;
-
     function searchApi(){
         
         let searchBar = document.getElementById('searchBar');
         if(searchBar.value == null || searchBar.value.trim() == "") {
             alert("The search bar is empty")
-
         }
+
         else if (searchBar.value){
             searchResult = searchBar.value.trim();
-            console.log(`Type:${typeof searchResult} and then Result ${searchResult}`)
-            showInfo()
-            
+            // console.log(`Type:${typeof searchResult} and then Result ${searchResult}`)
+            showInfo()   
         } 
     }
+
+
+    //add eventlistener to the input "KeyBoard Enter"
+    let input = document.getElementById('searchBar');
+    input.addEventListener('keydown', (event)=>{
+        if(event.key === "Enter"){
+            searchApi();
+        }
+    })
+    document.addEventListener('keyup', (event)=>{
+        if(event.key === 'Escape'){
+            hidePopUp();
+        }
+    })
+
+
 
     // function to show info in poped div 
     let errorMsg = true;
     async function showInfo() {
         let searchUrl = `https://restcountries.com/v3.1/name/${searchResult}`
-        console.log(searchUrl);
+        // console.log(searchUrl);
         try {
             const searches = await fetch(searchUrl, {mode: "cors"});
             if (!searches.ok) {
                 throw new Error(alert('There was an error. Please try again'));
             }
             const datas = await searches.json();
-            console.log(datas)
-            document.getElementById('countryName').innerHTML = datas[0].name.common;
+            // console.log(datas)
+            document.getElementById('countryName').innerHTML = datas[0].name.official;
             document.getElementById('flag').src = datas[0].flags.png;
-            document.getElementById('coatArms').src= datas[0].coatOfArms.svg;
+            document.getElementById('coatArms').src= datas[0].coatOfArms.png;
             document.getElementById('officialName').innerHTML = datas[0].name.official;
             document.getElementById('capitalCity').innerHTML = datas[0].capital;
             document.getElementById('commonName').innerHTML = datas[0].name.common;
@@ -272,15 +293,59 @@ let buttons = document.querySelectorAll('.continentHead');
             document.getElementById('countryLong').innerHTML = `${datas[0].latlng[1]}`;
             document.getElementById('capitalLat').innerHTML = `${datas[0].capitalInfo.latlng[0]}`;
             document.getElementById('capitalLong').innerHTML = `${datas[0].capitalInfo.latlng[1]}`;
-
+            document.getElementById("maps").innerHTML = `<a target="_blank" href=${datas[0].maps.googleMaps}>Google Maps</a>`
+            let currency = datas[0].currencies;
+            for(let currencyProp in currency){
+                 document.getElementById("currency").innerHTML = `${currencyProp} (${currency[currencyProp].name}) 
+                 <span  id="symbol"> ${currency[currencyProp].symbol}</span>`
+            // console.log(currency[currencyProp].name)
+            }
         }
         catch (error) {
             console.error("ther was an aerro", error);
             alert(error);
-
         }
+        finally {
+            showPopUp();
+        }
+    }
+
+   
     
-    finally {
-    showPopUp();
+
+//AAdding the black white toggling
+
+let darkWhite = document.getElementById('darkWhite');
+let isDarkSelected = false;
+let navLinks = document.querySelectorAll('.navLinks');
+let body = document.querySelector('body');
+let darkModeImg = document.getElementById('darkModeImg');
+let searchIcon = document.getElementById('searchIcon');
+let continentHead = document.querySelectorAll(".continentHead");
+let dropDown = document.querySelectorAll('.dropDown');
+function turnDark() {
+    body.classList.toggle("darkMode");
+    navLinks.forEach((elem)=>{
+        elem.classList.toggle('navLinks-black')
+    });
+    continentHead.forEach((elem)=>{
+        elem.classList.toggle("continentHead-black");
+    })
+    isDarkSelected = !isDarkSelected;
+    if(isDarkSelected){
+        darkWhite.textContent = "White Mode"
+         darkModeImg.src = `https://img.icons8.com/sf-regular-filled/48/FFFFFF/sun.png`
+         searchIcon.src= `https://img.icons8.com/ios-filled/50/FFFFFF/google-web-search.png`
+         dropDown.forEach((elem)=>{
+            elem.src = `https://img.icons8.com/ios-filled/50/down-squared--v1.png`
+         })
     }
-    }
+    else{
+        darkWhite.textContent = "Dark Mode"
+         darkModeImg.src = `https://img.icons8.com/sf-black-filled/64/moon-symbol.png`;
+         searchIcon.src= `https://img.icons8.com/ios-filled/50/google-web-search.png`
+         dropDown.forEach((elem)=>{
+            elem.src = `https://img.icons8.com/ios-filled/50/FFFFFF/down-squared--v1.png` 
+         })
+    };
+}

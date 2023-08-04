@@ -9,6 +9,7 @@
 }
 body {
     margin-bottom: 40px;
+    background-color: rgba(255, 255, 255, 0.767);
 }
 #mainHead {
     display: flex;
@@ -49,7 +50,7 @@ header h1 {
     padding: 0;
     font-style: oblique;
     margin: 0;
-    color: rgb(155, 8, 8);
+    color: rgb(255, 0, 55);
 
 }
 #searchSection {
@@ -127,7 +128,8 @@ header h1 {
     box-shadow: 2px 2px 2px 3px var(--shadows);
     border-radius: 10px;
     padding: 0 20px;
-
+    background-color: #041C32;
+    color: white;
     text-transform: uppercase;
     margin: 20px 25px;
     display: flex;
