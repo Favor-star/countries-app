@@ -1,6 +1,7 @@
 :root {
     --darkColor1: #041C32;
     --darkColor2: #EEEEEE;
+    --darkColor3: #0a4d682d;
 }
 * {
     box-sizing: border-box;
@@ -16,10 +17,22 @@
     width: 100%;
     height: 100vw;
     /* border: 2px solid black; */
-    background-color: rgba(0, 0, 0, 0.555);
+    background-color: rgba(0, 0, 0, 0.719);
+    
     padding-bottom: 60px;
     display: none;
 }
+#pop-up::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: inherit;
+    filter: blur(20px); /* Adjust the blur radius to your preference */
+    z-index: -1; /* Place the pseudo-element below the content */
+  }
 
 #pop-up2 {
     width: 60%;
@@ -91,6 +104,7 @@ figcaption {
     font-weight: 800;
     box-shadow: 0px 2px 7px black;
     border-radius: 10px;
+    background-color: var(--darkColor3);
     padding: 10px;
     font-family: cursive, 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     margin: 10px;
@@ -177,6 +191,9 @@ figcaption {
 .pop-up2-black {
     background-color: var(--darkColor1);
     color: var(--darkColor2);
+}
+.continental-black {
+    background-color: var(--darkColor3);
 }
 
 @media screen and (max-width: 1440px) {
@@ -356,15 +373,13 @@ figcaption {
         background-color: var(--darkColor1);
         color: var(--darkColor2);
     }
+    .darkClick {
+        height:  40px;
+    }
 }
-
-@media screen and (max-width: 700px) {
-    body {
-        background-color: rgba(0, 0, 255, 0.411);
+@media screen and (max-width: 900px){
+    .figures {
+        display: flex;
+        flex-direction: column;
     }
-    #searchBar {
-        width: 70px;
-        font-size: 14px;
-    }
-   
 }

@@ -1,6 +1,7 @@
 :root {
     --shadows: rgba(10, 10, 10, 0.692);
     --shadows2: black;
+    --darkColor3: #0a4d682d
 }
 * {
     box-sizing: border-box;
@@ -39,7 +40,7 @@ body {
     
  }
  .navLinks:hover {
-    background-color: gray;
+    background-color: #041C32;
     color: white;
  }
 
@@ -48,7 +49,9 @@ header h1 {
     text-transform: uppercase;
     text-shadow: 2px 2px 2px ray;
     margin-top: 0;
-    margin-bottom: 0;;
+    margin-bottom: 0;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: 900;
 }
 #mainHead p {
     padding: 0;
@@ -84,6 +87,7 @@ header h1 {
     width: 200px;
     border-radius: 4px;
     box-shadow: 4px 4px 5px 4px var(--shadows);
+    background-color: var(--darkColor3);
 }
 
 .flag-container {
@@ -170,7 +174,7 @@ header h1 {
         font-weight: 700;
      }
      .navLinks:hover {
-        background-color: gray;
+        background-color: #041C32;
         color: white;
      }
     

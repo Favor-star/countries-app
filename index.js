@@ -279,6 +279,9 @@ let buttons = document.querySelectorAll('.continentHead');
             document.getElementById('countryName').innerHTML = datas[0].name.official;
             document.getElementById('flag').src = datas[0].flags.png;
             document.getElementById('coatArms').src= datas[0].coatOfArms.png;
+            if(datas[0].coatOfArms.png === undefined){
+                document.getElementById('coatArms').src = `https://icon-library.com/images/shield-icon-png/shield-icon-png-10.jpg`
+            }
             document.getElementById('officialName').innerHTML = datas[0].name.official;
             document.getElementById('capitalCity').innerHTML = datas[0].capital;
             document.getElementById('commonName').innerHTML = datas[0].name.common;
@@ -333,6 +336,9 @@ function turnDark() {
     });
     continentHead.forEach((elem)=>{
         elem.classList.toggle("continentHead-black");
+    })
+    continental.forEach(elem => {
+        elem.classList.toggle('continental-black');
     })
     isDarkSelected = !isDarkSelected;
     if(isDarkSelected){
