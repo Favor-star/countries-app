@@ -7,6 +7,7 @@
  let oceania = document.getElementById('oceania');
  let popUp = document.getElementById('pop-up');
  let divValue;
+ 
 
 //CREATING DIVS FOR AFRICA SECTION
 for(let i = 1; i <= 59; i ++){
@@ -323,8 +324,10 @@ let darkModeImg = document.getElementById('darkModeImg');
 let searchIcon = document.getElementById('searchIcon');
 let continentHead = document.querySelectorAll(".continentHead");
 let dropDown = document.querySelectorAll('.dropDown');
+let popUp2 = document.getElementById('mainPopUpInfo');
 function turnDark() {
     body.classList.toggle("darkMode");
+    popUp2.classList.toggle('pop-up2-black');
     navLinks.forEach((elem)=>{
         elem.classList.toggle('navLinks-black')
     });
